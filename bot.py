@@ -1,19 +1,14 @@
-# bot.py
+# from dotenv import load_dotenv - FOR LOCAL USE
 import os
-from dotenv import load_dotenv
-
-# 1
 import discord
 from discord.ext import commands
 
-load_dotenv()
+# load_dotenv() - FOR LOCAL USE
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
 intents = discord.Intents.default()
 intents.members = True
-
-# 2
 bot = commands.Bot(command_prefix='$', intents=intents)
 
 @bot.event
