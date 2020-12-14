@@ -20,9 +20,6 @@ bot = commands.Bot(command_prefix='$', intents=intents)
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
-    guild = discord.utils.get(bot.guilds, name=GUILD)
-    members = '\n - '.join([member.name for member in guild.members])
-    print(members)
 
 @bot.command(name="hi", help="Responds with a fingerguns emoji.")
 async def fingerguns_hello(ctx):
