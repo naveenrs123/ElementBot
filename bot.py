@@ -34,7 +34,7 @@ async def motivate(ctx):
             await ctx.send("The Zenquotes API is overloaded. Please wait 30 seconds before trying again.")
         else:
             embedQuote = discord.Embed(title="Motivational Quotes", type="rich", url="https://zenquotes.io/")
-            embedQuote.color = discord.Color.from_rgb(52, 29, 105)
+            embedQuote.color = discord.Color.from_rgb(125, 69, 255)
             embedQuote.set_thumbnail(url="https://user-images.githubusercontent.com/42954045/102170926-49b47f80-3e4a-11eb-929b-eed606a70399.png") \
                       .add_field(name='Quote:',value="_" + message + "_", inline=False) \
                       .add_field(name='Author:', value=author, inline=False) \
