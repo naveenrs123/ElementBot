@@ -1,6 +1,7 @@
 #from dotenv import load_dotenv # FOR LOCAL USE
 import os
 import requests
+import random
 import discord
 from discord.ext import commands
 
@@ -46,6 +47,23 @@ async def motivate(ctx):
 @bot.command(name="compliment", help="Compliments a user of your choice, or yourself if no user is provided.")
 async def compliment(ctx, user: discord.Member=None):
     mentioned_user = user if user is not None else ctx.message.author
-    await ctx.send(f"Hey {mentioned_user.mention}. You're a wonderful person!")
+    quotes = [
+        "{}, I appreciate you a lot!",
+        "Thanks for being so awesome {}!",
+        "Who's got two thumbs and a lovely personality? It's {} of course!",
+        "You are an excellent friend {}!",
+        "I am glad that we met {}!",
+        "You got this {}!",
+        "{}, I believe in you!",
+        "I hope you are proud of yourself {}, because I am!",
+        "{}, you're a smart cookie!",
+        "{}, you deserve a hug right now (if you want one of course)!",
+        "How are you so cool {}?",
+        "Hey {}, you're a wonderful person!",
+        "I'm lucky to have you in my life {}!",
+        "Never stop being you {}!",
+        "Who's a Kool Kat? You are {}!"
+    ]
+    await ctx.send(f"**{ctx.message.author.mention} says:**  " + random.choice(quotes).format(mentioned_user.mention))
 
 bot.run(TOKEN)
