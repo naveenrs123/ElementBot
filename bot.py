@@ -28,19 +28,24 @@ async def motivate(ctx):
     response = requests.get("https://zenquotes.io/api/random")
     if response.status_code == 200:
         quote = response.json()
-        message =quote[0]['q']
+        message = quote[0]['q']
         author = quote[0]['a']
         if message.startswith("Too many requests."):
-            await ctx.send("The Zenquotes API is overloaded. Please wait 30 seconds before trying again.")
+            await ctx.send("The ZenQuotes API is overloaded. Please wait 30 seconds before trying again.")
         else:
-            embedQuote = discord.Embed(title="Motivational Quotes", type="rich", url="https://zenquotes.io/")
-            embedQuote.color = discord.Color.from_rgb(125, 69, 255)
-            embedQuote.set_thumbnail(url="https://user-images.githubusercontent.com/42954045/102170926-49b47f80-3e4a-11eb-929b-eed606a70399.png") \
+            embed_quote = discord.Embed(title="Motivational Quotes", type="rich", url="https://zenquotes.io/")
+            embed_quote.color = discord.Color.from_rgb(125, 69, 255)
+            embed_quote.set_thumbnail(url="https://user-images.githubusercontent.com/42954045/102170926-49b47f80-3e4a-11eb-929b-eed606a70399.png") \
                       .add_field(name='Quote:',value="_" + message + "_", inline=False) \
                       .add_field(name='Author:', value=author, inline=False) \
                       .set_footer(text="Quotes provided by ZenQuotes", icon_url=bot.user.avatar_url)
-            await ctx.send(embed=embedQuote)
+            await ctx.send(embed=embed_quote)
     else:
         await ctx.send("An unknown error occurred. Please try again later.")
+
+@bot.command(name="compliment", help="Compliments a user of your choice, or yourself if no user is provided.")
+async def compliment(ctx, user: discord.Member=None):
+    mentioned_user = user if user is not None else ctx.message.author
+    await ctx.send(f"Hey {mentioned_user.mention}. You're a wonderful person!")
 
 bot.run(TOKEN)
