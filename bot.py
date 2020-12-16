@@ -17,11 +17,15 @@ bot = commands.Bot(command_prefix='$', intents=intents)
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
-@bot.command(name="hi", help=f"Responds with the fingerguns emoji.")
+@bot.command(name="hi", help="Responds with the fingerguns emoji.")
 async def fingerguns_hello(ctx):
     guild = discord.utils.get(bot.guilds, name=GUILD)
     fingerguns = discord.utils.get(guild.emojis, name="fingerguns")
     await ctx.send(f"<:{fingerguns.name}:{fingerguns.id}>")
+
+@bot.command(name="F", help="Responds with \"F's in the chat :(\"")
+async def f_method(ctx):
+    await ctx.send("F's in the chat :(")
 
 @bot.command(name="motivate", help="Responds with a motivational quote.")
 async def motivate(ctx):
