@@ -44,7 +44,7 @@ async def motivate(ctx):
     else:
         await ctx.send("An unknown error occurred. Please try again later.")
 
-@bot.command(name="compliment", help="Compliments a user of your choice, or yourself\nif no user is provided.")
+@bot.command(name="compliment", help="Compliments a user, or yourself\nif no user is provided.")
 async def compliment(ctx, user: discord.Member=None):
     mentioned_user = user if user is not None else ctx.message.author
     quotes = [
