@@ -66,7 +66,9 @@ async def compliment(ctx, user: discord.Member=None):
         "Hey {}, you're a wonderful person!",
         "I'm lucky to have you in my life {}!",
         "Never stop being you {}!",
-        "Who's a Kool Kat? You are {}!"
+        "Who's a Kool Kat? You are {}!",
+        "It's a great day because you're here {}!",
+        "{}, you are a strong and resilient person who has fought many hard battles!"
     ]
     await ctx.send(f"**{ctx.message.author.mention} says:**  " + random.choice(quotes).format(mentioned_user.mention))
 
