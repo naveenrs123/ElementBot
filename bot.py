@@ -1,11 +1,11 @@
-#from dotenv import load_dotenv # FOR LOCAL USE
+from dotenv import load_dotenv # FOR LOCAL USE
 import os
 import requests
 import random
 import discord
 from discord.ext import commands
 
-#load_dotenv() # FOR LOCAL USE
+load_dotenv() # FOR LOCAL USE
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
@@ -20,10 +20,11 @@ async def on_ready():
 
 @bot.command()
 async def help(ctx):
-    embed = discord.Embed(title="Element Bot Help", colour=discord.Color.from_rgb(125, 69, 255))
-    embed.description("This offers a basic explanation of all the commands that can be understood by Element Bot.")
+    embed = discord.Embed(title="Element Bot Help", colour=discord.Color.from_rgb(125, 69, 255), description="This offers a basic explanation of all the commands that can be understood by Element Bot.")
+    prefix = await bot.get_prefix(ctx.message)
     for bot_command in bot.commands:
-        embed.add_field(name=bot_command.name, value=bot_command.value, inline=True)
+        if (bot_command.name != 'help'):
+            embed.add_field(name=prefix + bot_command.name, value=bot_command.help, inline=False)
     await ctx.send(embed=embed)
 
 @bot.command(name="hi", help="Responds with the fingerguns emoji.")
