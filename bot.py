@@ -12,10 +12,19 @@ GUILD = os.getenv('DISCORD_GUILD')
 intents = discord.Intents.default()
 intents.members = True
 bot = commands.Bot(command_prefix='$', intents=intents)
+bot.remove_command("help")
 
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
+
+@bot.command()
+async def help(ctx):
+    embed = discord.Embed(title="Element Bot Help", colour=discord.Color.from_rgb(125, 69, 255))
+    embed.description("This offers a basic explanation of all the commands that can be understood by Element Bot.")
+    for bot_command in bot.commands:
+        embed.add_field(name=bot_command.name, value=bot_command.value, inline=True)
+    await ctx.send(embed=embed)
 
 @bot.command(name="hi", help="Responds with the fingerguns emoji.")
 async def fingerguns_hello(ctx):
