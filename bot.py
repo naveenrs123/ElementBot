@@ -1,11 +1,11 @@
-from dotenv import load_dotenv # FOR LOCAL USE
+#from dotenv import load_dotenv # FOR LOCAL USE
 import os
 import requests
 import random
 import discord
 from discord.ext import commands
 
-load_dotenv() # FOR LOCAL USE
+#load_dotenv() # FOR LOCAL USE
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
